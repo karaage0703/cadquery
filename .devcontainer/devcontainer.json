@@ -1,12 +1,10 @@
 {
-    "name": "pyconshizu2024-cadquery-env",
-    "build": {
-        "context": "..",
-        "dockerfile": "../Dockerfile",
-        "options": [
-            "--platform=linux/amd64"
-        ]
-    },
+    "name": "cadquery-env",
+    "dockerComposeFile": "../docker-compose.yml",
+    "service": "app",
+    "workspaceFolder": "/workspace",
+    // "remoteUser": "cq",
+    "postCreateCommand": "echo 'source activate cq_env' >> ~/.bashrc",
     "customizations": {
         "vscode": {
             "extensions": [
@@ -19,7 +17,8 @@
                 "DavidAnson.vscode-markdownlint",
                 "ms-azuretools.vscode-docker",
                 "mhutchie.git-graph",
-                "bernhard-42.ocp-cad-viewer"
+                "bernhard-42.ocp-cad-viewer",
+                "rooveterinaryinc.roo-cline"
             ]
         }
     }

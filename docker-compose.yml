@@ -1,0 +1,12 @@
+version: '3'
+services:
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "3939:3939"
+    volumes:
+      - .:/workspace
+    working_dir: /workspace
+    command: /bin/bash -c "source activate cq_env && sleep infinity"
