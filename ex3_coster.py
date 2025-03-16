@@ -14,18 +14,11 @@ logo_size = 56
 
 # ファイルを読み込む
 python_logo_rinkaku = cq.importers.importDXF("asset/python-logo-only_rinkaku.dxf")
-show_object(python_logo_rinkaku, name="Python Logo")
+# show_object(python_logo_rinkaku, name="Python Logo")
 
 # 輪郭のみを取り出して押し出し、中心位置に持ってくる
 # DXFからワイヤーのみ(wires)を取り出す（toPending）、押し出す（extrude）
-logo_obj = (
-    cq.Workplane("XY")
-    .add(python_logo_rinkaku)
-    .wires()
-    .toPending()
-    .extrude(3)
-    .translate((0, 0, 2))
-)
+logo_obj = cq.Workplane("XY").add(python_logo_rinkaku).wires().toPending().extrude(3).translate((0, 0, 2))
 show_object(
     logo_obj,
     name="Python Logo model",
@@ -60,4 +53,6 @@ show_object(
 )
 
 # STLで書き出す: トレランスを細かくして輪郭を綺麗にする
-cq.exporters.export(coaster_result, "exports/ex3_coster.stl", tolerance=0.001)
+cq.exporters.export(coaster_result, "ex3_coster.stl", tolerance=0.001)
+
+show_object(python_logo_rinkaku, name="Python Logo")

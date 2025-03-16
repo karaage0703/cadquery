@@ -22,12 +22,7 @@ kubomi_clearance = 2
 src_text = "【危険温度】\n25:　夏日\n30:真夏日\n35:猛暑日"
 
 # プレート全体の作成
-base_plate = (
-    cq.Workplane("XY")
-    .box(base_plate_width, base_plate_height, base_plate_thickness)
-    .edges("|Z")
-    .fillet(2)
-)
+base_plate = cq.Workplane("XY").box(base_plate_width, base_plate_height, base_plate_thickness).edges("|Z").fillet(2)
 show_object(
     base_plate,
     name="base_plate",
@@ -35,12 +30,7 @@ show_object(
 
 # 右側に温湿度計を乗せる窪みを作る
 # 窪み用モデルを作る: 82 x 68 で2mm窪ませる。
-kubomi = (
-    cq.Workplane("XY")
-    .box(kubomi_width, kubomi_height, kubomi_thickness)
-    .edges("|Z")
-    .fillet(1.8)
-)
+kubomi = cq.Workplane("XY").box(kubomi_width, kubomi_height, kubomi_thickness).edges("|Z").fillet(1.8)
 # 窪み用モデルを移動させる。左側に寄せる。クリアランスは 上と左が2mmになる様にする
 # 左なので-方向に移動させる
 move_x = -(base_plate_width - kubomi_width) / 2 + kubomi_clearance
@@ -80,6 +70,6 @@ show_object(
 )
 
 # 3DオブジェクトをSTLファイルとして保存
-cq.exporters.export(text_base_plate, "exports/natsu_plate.stl")
+cq.exporters.export(text_base_plate, "natsu_plate.stl")
 # stepファイルとして保存
-cq.exporters.export(text_base_plate, "exports/natsu_plate.step")
+cq.exporters.export(text_base_plate, "natsu_plate.step")

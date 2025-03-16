@@ -47,5 +47,5 @@ show_object(ex2_futa.translate((120, 0, 0)), name="ex2_futa")
 # )
 
 # STLで書き出す：torelanceでメッシュの精度を細かくする
-cq.exporters.export(ex2_iremono, "exports/ex2_iremono.stl", tolerance=0.001)
-cq.exporters.export(ex2_futa, "exports/ex2_futa.stl", tolerance=0.001)
+cq.exporters.export(ex2_iremono, "ex2_iremono.stl", tolerance=0.001)
+cq.exporters.export(ex2_futa, "ex2_futa.stl", tolerance=0.001)
